@@ -136,3 +136,165 @@ int main()
 	system("pause");
 	return 0;
 }
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int a = 10;
+	int b = 6;
+	printf("%d\n",(a+b)>>1);
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+//
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int  JUDGE(char arr1[],char arr2[])
+{
+	if(0 == strcmp(arr1,arr2))
+	{
+		return 0;
+	}
+	else
+		return 1;
+}
+
+void LEFT1(char arr1[],int len,int k)
+{
+	int i = 0;
+	k = k%len;
+	for(i=0; i<k; i++)
+	{
+		int j = 0;
+		char temp = arr1[0];
+
+		for(j=0; j<len-1; j++)
+		{
+			arr1[j] = arr1[j+1];
+		}
+		arr1[j] = temp;
+	}
+}
+void LEFT2(char arr1[],int len,int k)
+{
+	int i = 0;
+	k = k%len;
+	for(i=0; i<k; i++)
+	{
+		int j = 0;
+		char temp = arr1[len-1];
+		
+		for(j=len-1; j>0; j--)
+		{
+			arr1[j] = arr1[j-1];
+		}
+		arr1[0] = temp;
+	}
+}
+
+
+int main()
+{
+	char arr1[] = "AABCD";
+	char arr2[] = "CDEAB";
+	int k = 2;
+	int len = strlen(arr1);
+	if(k<0)
+	{
+		LEFT1(arr1,len,k);
+		JUDGE(arr1,arr2);
+		printf("相同，返回值为\n");
+		printf("%d\n",JUDGE(arr1,arr2));
+
+	}
+	
+	
+	else if(k>=0)
+	{
+		LEFT2(arr1,len,k);
+		JUDGE(arr1,arr2);
+		printf("不相同，返回值为\n");
+
+		printf("%d\n",JUDGE(arr1,arr2));
+
+	}
+
+	printf("%s\n",arr1);
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void find_data(int arr[],int len)
+{
+	int i = 0;
+	int j = 0;
+	int flag = 0;
+	for(; i<len; i++)
+	{
+		flag = 0;
+		for(j=0; j<len; j++)
+		{
+			if(arr[i]==arr[j]&&i!=j)
+				flag = 1;
+		}
+		if( 0 == flag)
+			printf("%d\n",arr[i]);
+
+	}
+}
+
+
+int main()
+{
+	int arr[] = {1,2,1,2,3,4,5,5};
+	int len = sizeof(arr)/sizeof(arr[0]);
+	find_data(arr,len);
+	system("pause");
+	return 0;
+}
+
+
+#include<stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	int money = 20;
+	int total = money;
+	int empty = money;
+	while(empty>=2)
+	{
+		total += empty/2;
+		empty = empty/2+empty%2;
+	}
+	printf("%d\n",total);
+	system("pause");
+	return 0;
+}
