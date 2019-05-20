@@ -256,3 +256,168 @@ int main()
 	system("pause");
 	return 0;
 }
+#include<stdio.h>
+#include<assert.h>
+
+
+void print(int arr[3][5], int row, int col)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < 3; i++)
+
+	{
+		for (j = 0; j < 5; j++)
+		{
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+
+
+//void test(int arr[])
+//{
+//	;
+//}
+//void test(int arr[10])
+//{
+//	;
+//}
+//void test(int *arr)
+//{
+//	;
+//}
+//void test(int *arr[10])
+//{
+//	;
+//}
+void test()
+{
+	printf("hehe\n");
+}
+
+struct TEST
+{
+	int Nun;
+	char *pcName;
+	short sDate;
+	char cha[2];
+	short sBa[4];
+}*p;
+
+
+int main()
+{
+	char *c[] = { "ENTER", "NEW", "POINT", "FIRST" };
+
+	char **cp[] = { c + 3, c + 2, c + 1, c };
+
+	char ***cpp = cp;
+	printf("%s\n\r", **++cpp);
+	printf("%s\n\r", *--*++cpp + 3);
+	printf("%s\n\r", *cpp[-2] + 3);
+	printf("%s\n\r", cpp[-1][-1] + 1);
+	system("pause");
+	return 0;
+}
+	
+
+	/*printf("%s", **++cpp);*/
+
+	/*printf("%s", *--*++cpp + 3);*/
+	/*printf("%s", *cpp[-2] + 3);*/
+	/*printf("%s\n", cpp[-1][-1] + 1);*/
+
+	/*char* a[] = { "A", "b", "c" };
+	char** pa = a;
+	pa++;
+	printf("%s\n", *pa);*/
+
+	/*int aa[2][5] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int* ptr1 = (int*)(&aa + 1);
+	int* ptr2 = (int*)(aa + 1);
+	printf("%d %d", *(ptr1 - 1), *(ptr2 - 1));*/
+	/*int a[5][5];
+	int(*p)[4];
+	p = a;
+	printf("%p %d\n", &p[4][2] - &a[4][2], &p[4][2] - &a[4][2]);*/
+	//00B5FC54   0F65D957
+	/*int a[3][2] = { (0, 1), (2, 3), (4, 5) };
+	int* p = a;
+	p = a[0];
+	printf("%d", p[0]);*/
+
+	/*int a[4] = { 1, 2, 3, 4 };
+
+	int *ptr1 = (int*)&a + 1;
+	int *ptr2 = (int*)((int)a+1);
+
+	printf("%x %x\n", ptr1[-1], *ptr2);*/
+	/*printf("%p\n", &a[0]);
+	printf("%p\n", &a[1]);*/
+
+	/*printf("%p\n", p + 0x1);
+	printf("%p\n", (unsigned long)p + 0x1);
+	printf("%p\n", (unsigned int*)p + 0x1);*/
+
+
+	/*
+	int a[5] = { 1, 2, 3, 4, 5 };
+
+	int* ptr = (int*)(&a + 1);
+
+	printf("%d %d", *(ptr - 1), *(a + 1));*/
+
+	/*int a[10] = { 0 };
+	int *a[10] = { 0 };*/
+	/*char str1[] = "abc";
+	char str2[] = "abc";
+	char* str3 = "abc";
+	char* str4 = "abc";
+
+
+	if (str1 == str2)
+	{
+	printf("same\n");
+
+	}
+	else
+	{
+	printf("not same\n");
+	}
+
+	if (str3 == str4)
+	{
+	printf("same\n");
+
+	}
+	else
+	{
+	printf("not same\n");
+	}
+	system("pause");
+	return 0;*/
+
+	//char arr[10] = { 0 };
+
+
+	//printf("arr = %p", arr);
+	//printf("&arr = %p", &arr);
+
+	//printf("arr+1 = %p", arr+1);
+	//printf("&arr+1 = %p", &arr+1);
+
+
+
+
+	/*int arr[3][5] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	int(*p)[10] = &arr;
+	print(arr, 3, 5);*/
+
+	/*system("pause");
+	return 0;*/
+
+//}
