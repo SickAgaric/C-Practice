@@ -345,6 +345,8 @@ int main()
 //{
 //	char arr[10]="abcdefg";
 //	char arr0[10]="abcdefg";
+
+
 //	char arr1[10]={0};
 //	my_memmove(arr+2,arr,4);
 //	my_memmove(arr1,arr0,4);
