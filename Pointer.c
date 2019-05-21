@@ -256,9 +256,12 @@ int main()
 	system("pause");
 	return 0;
 }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 1bdcdd9d4583dc82cd10dea36f8366bae9a874d4
 #include<stdio.h>
 #include<assert.h>
 
@@ -423,4 +426,8 @@ int main()
 	/*system("pause");
 	return 0;*/
 
+<<<<<<< HEAD
 //}
+=======
+//}
+>>>>>>> 1bdcdd9d4583dc82cd10dea36f8366bae9a874d4
