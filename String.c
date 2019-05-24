@@ -355,3 +355,169 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+
+//#include<stdio.h>
+//#include<assert.h>
+//
+////char* my_strncat(char* dst, const char* src, size_t num)
+////{
+////	assert(dst && src);
+////
+////	char* ret = dst;
+////	size_t i = 0;
+////
+////	while (*dst)
+////        *dst++;
+////
+////	while (num && (*dst++ = *src++)!='\0')
+////	{
+////		num--;
+////	}
+////	*dst = '\0';
+////
+////
+////
+////	return ret;
+////	
+////}
+//
+//char *my_strncat(char *dest, const char *src, int sz)
+//{
+//	char *tmp = NULL;
+//	assert(dest);
+//	assert(src);
+//	tmp = dest;
+//	while (*dest != '\0')
+//	{
+//		dest++;
+//	}
+//	while (sz)
+//	{
+//		*dest = *src;
+//		dest++;
+//		src++;
+//		sz--;
+//	}
+//	*dest = '\0';
+//	return tmp;
+//}
+//
+//int main()
+//{
+//	char str1[20] = "i like u";
+//	char str2[20] = "but just like u**";
+//
+//	my_strncat(str1, str2, 15);
+//	printf("%s", my_strncat(str1, str2, 15));
+//	return 0;
+//}
+//
+//#include<stdio.h>
+//#include<assert.h>
+//#include<stdlib.h>
+//
+//char* my_strncat(char* dst, const char* src, int  num)
+//{
+//	assert(dst && src);
+//
+//	char* ret = dst;
+//	while (*dst)
+//	{
+//		dst++;
+//	}
+//
+//	if (strlen(src) < num)
+//	{
+//		num = strlen(src);
+//	}
+//
+//	while (num--)
+//	{
+//		*dst++ = *src++;
+//
+//	}
+//	*dst = '\0';
+//
+//	return ret;
+//}
+//
+//int main()
+//{
+//
+//	char str1[15] = "HELLO";
+//	char str2[10] = "world";
+//	char* ret = my_strncat(str1, str2, 5);
+//	/*my_strncat(str1, str2, 5);*/
+//	printf("%s", ret);
+//	system("pause");
+//	return 0;
+//}
+
+#include<stdio.h>
+#include<assert.h>
+
+
+int my_strncmp(const char* str1, const char* str2, size_t num)
+{
+
+	assert(str1 && str2);
+	size_t i = 0;
+	while (i++<num && *str1++ && *str2++)
+	{
+		if (*str1>*str2)
+			return 1;
+		else if (*str1 < *str2)
+			return -1;
+		
+	}
+	if (i == num && *str1)
+		return 1;
+	else if (i == num && *str2)
+		return -1;
+	else
+		return 0;
+
+}
+int main()
+{
+	char str1[10] = "AABC";
+	char str2[10] = "AABCS";
+
+
+	printf("%d", my_strncmp(str1, str2, 4));
+	system("pause");
+	return 0;
+}
+
+//#include<stdio.h>
+//#include<assert.h>
+//
+//char* my_strncpy(char* dst, const char* src, size_t num)
+//{
+//	assert(dst && src);
+//	char *ret = dst;
+//	int i = 0;
+//	
+//
+//
+//	while (i++ <num && (*dst++ = *src++) != '\0')
+//		;
+//	if (*(dst) != '\0')
+//		*dst = '\0';
+//	return ret;
+//}
+//
+//
+//
+//int main()
+//{
+//	char str1[] = "happy day me";
+//	char str2[20];
+//	char str3[20];
+//
+//	/*my_strncpy(str2, str1, 5);*/
+//	printf("%s\n", my_strncpy(str2, str1, 5));
+//	system("pause");
+//	return 0;
+//}
