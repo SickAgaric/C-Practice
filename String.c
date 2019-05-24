@@ -521,3 +521,131 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+//#include<stdio.h>
+//#include<assert.h>
+//#include<stdlib.h>
+//
+//char* my_strncat(char* dst, const char* src, int  num)
+//{
+//	assert(dst && src);
+//
+//	char* ret = dst;
+//	while (*dst)
+//	{
+//		dst++;
+//	}
+//
+//	if (strlen(src) < num)
+//	{
+//		num = strlen(src);
+//	}
+//
+//	while (num--)
+//	{
+//		*dst++ = *src++;
+//
+//	}
+//	*dst = '\0';
+//
+//	return ret;
+//}
+//
+//int main()
+//{
+//
+//	char str1[15] = "HELLO";
+//	char str2[10] = "world";
+//	//char* ret = my_strncat(str1, str2, 1);
+//	my_strncat(str1, str2, 5);
+//	printf("%s", my_strncat(str1,str2,5));
+//	system("pause");
+//	return 0;
+//}
+
+#include<stdio.h>
+#include<stdlib.h>
+
+//int compare(const void* a,const  void* b)
+//{
+//	return (*(int*)a - *(int*)b);
+//}
+
+//int main()
+//{
+//	int values[] = { 1, 2, 3, 6, 7, 4 };
+//	
+//	qsort(values, 6, sizeof(int), compare);
+//	for (int i = 0; i < 6; i++)
+//	{
+//		printf("%d", values[i]);
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+
+//int compare1(const void* a, const void* b)
+//{
+//	return (*(int*)a - *(int*)b);
+//}
+//
+//int compare2(const void* a, const void* b)
+//{
+//	return (*(char*)a - *(char*)b);
+//}
+//
+//
+//int main()
+//{
+//	int i = 0;
+//	
+//	char arr1[10] = { 'a', 'b', 'e', 'd' };
+//	int arr2[10] = { 2, 3, 1, 4, 5, 8 };
+//
+//	qsort(arr1, 4, sizeof(char),compare2);
+//	for (i = 0; i < 4; i++)
+//		printf("%c\n", arr1[i]);
+//	
+//	qsort(arr2, 6,sizeof(int), compare1);
+//	for (i = 0; i < 6; i++)
+//		printf("%d\n", arr2[i]);
+//	
+//	
+//	system("pause");
+//	return 0;
+//}
+
+int* twoSum(int* nums, int numsSize, int target)
+{
+	static int a[2] = { 0 };
+
+
+	for (int i = 0; i < numsSize - 1; i++)
+	{
+		for (int j = i + 1; j < numsSize; j++)
+		{
+			if (nums[i] + nums[j] == target)
+			{
+				a[0] = i;
+				a[1] = j;
+				return a;
+			}
+		}
+	}
+	return 0;
+}
+
+int main()
+{
+	int nums[10] = { 2, 7, 11, 15 };
+	int target = 9;
+	int* ret = twoSum(nums, 4, 9);
+	for (int i = 0; i < 2; i++)
+	{
+		printf("%d\n", ret[i]);
+	}
+	system("pause");
+	return 0;
+
+}
