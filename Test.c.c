@@ -111,3 +111,167 @@ bool isPalindrome(int x){
 	}
 	
 }
+//#include<stdio.h>
+//#include<assert.h>
+//
+//char * longestCommonPrefix(char ** strs, int strsSize){
+//	char* str = (char)malloc(128);
+//	memset(str, 0, 128);
+//	if (strsSize <= 1)
+//		return strs;
+//	int i = 0;
+//	int j = 0;
+//
+//	while (1)
+//	{
+//		while (i < strsSize - 1)
+//		{
+//			if (strs[i][j] != strs[i + 1][j])
+//				return str;
+//			i++;
+//		}
+//		j++;
+//		str[j] = strs[i][j];
+//
+//	}
+//	return str;
+//}
+//
+//
+//
+//char* longestCommonPrefix(char** strs, int strsSize) {
+//
+//	char* str = (char*)malloc(128);
+//	memset(str, 0, 128);
+//	int i, j = 0;
+//	if (strsSize == 0)
+//		return "";
+//
+//	strcpy(str, strs[0]);
+//	int count = strlen(str);
+//
+//	for (i = 0; i<strsSize; i++)
+//	{
+//
+//		char* currentStr = strs[i];
+//		if (count == 0)
+//			return "";
+//
+//		for (j = 0; j<count; j++)
+//		{
+//			if (str[j] != currentStr[j])
+//				break;
+//		}
+//		count = j;
+//		str[j] = 0;
+//	}
+//	return str;
+//}
+//
+//
+//
+//
+//
+//bool isValid(char* s) {
+//
+//	int length = 0;//定义字符串长度
+//	while (*(s + length))
+//		length++;//获取字符串长度
+//	char* ptr = (char*)malloc(length / 2);//分配内存空间
+//	memset(ptr, 0, length / 2);//初始化内存空间
+//	int i, a = 0;
+//	for (i = 0; i<length; i++)
+//	{
+//		if ((*(s + i) == '(') || (*(s + i) == '{') || (*(s + i) == '['))
+//		{
+//			a++;
+//			*(ptr + a) = *(s + i);
+//		}
+//		//'('与')'的ASCII值差1，'['与']'，'{'与'}'的ASCII值差2
+//		else if ((*(s + i) == (*(ptr + a) + 1)) || (*(s + i) == (*(ptr + a) + 2)))
+//		{
+//			a--;
+//		}
+//		else return 0;
+//	}
+//	if (a)
+//		return 0;
+//	return 1;
+//}
+//
+//bool isValid(char * s) 
+//{
+//    int length = strlen(s);
+//    
+//    char* ptr = (char*)malloc(length/2);
+//    memset(ptr,0,length/2);
+//    
+//    
+//    int i,j=0;
+//    for(i=0;i<length;i++)
+//    {
+//        if(s[i]=='(' || s[i]=='{' || s[i]=='[')
+//        {
+//            j++;
+//            *(ptr+j) = *(s+i);
+//        }
+//        else if ((*(s + i) == (*(ptr + j) + 1)) || (*(s + i) == (*(ptr + j) + 2)))
+//        {
+//            j--;
+//        }
+//        else
+//            return 0;
+//    }
+//    
+//    if(j)
+//        return 0;
+//    return 1;
+//}
+//
+//
+//
+
+
+
+#include<stdio.h>
+#include<stdbool.h>
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+
+bool isValid(char* s)
+{
+
+	int length = 0;
+	//定义字符串长度
+	while (*(s + length))length++;//获取字符串长度
+	char* ptr = (char*)malloc(length / 2);//分配内存空间
+	memset(ptr, 0, length / 2);//初始化内存空间
+	int i, a = 0;
+	for (i = 0; i<length; i++)
+	{
+		if ((*(s + i) == '(') || (*(s + i) == '{') || (*(s + i) == '['))
+		{
+			a++;
+			*(ptr + a) = *(s + i);
+		}
+		//'('与')'的ASCII值差1，'['与']'，'{'与'}'的ASCII值差2
+		else if ((*(s + i) == (*(ptr + a) + 1)) || (*(s + i) == (*(ptr + a) + 2)))
+		{
+			a--;
+		}
+		else return 0;
+	}
+	if (a)
+		return 0;
+	return 1;
+}
+
+int main()
+{
+	char s[10] = { '(', '[', ']', ')' };
+
+	bool isValid(s);
+
+	
+}
