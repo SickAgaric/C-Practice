@@ -275,3 +275,105 @@ int main()
 
 	
 }
+
+int removeElement(int* nums, int numsSize, int val)
+{
+	int count = 0;
+	int* head = nums;
+	int* tail = nums;
+	for (int i = 0; i < numsSize - 1; i++)
+	{
+		if (*head != val)
+		{
+			*head++ = *tail;
+			count++;
+		}
+		tail++;
+	}
+	return  count;
+
+	
+	
+	/*int left = 0, right = numsSize - 1;
+	while (right > left)
+	{
+		while (right > 0 && nums[right] == val) --right;
+		while (left < numsSize && nums[left] != val) ++left;
+		if (right < left)
+			break;
+		int temp = nums[left];
+		nums[left] = nums[right];
+		nums[right] = temp;
+		left++;
+		right--;
+	}
+	while (right >= 0 && nums[right] == val)
+		right--;
+	return right + 1;*/
+}
+
+//KMP算法
+	int strStr(char * haystack, char * needle)
+	{
+
+		assert(haystack && needle);
+
+		int a = strlen(haystack);
+		int b = strlen(needle);
+
+		if (b == 0)
+			return 0;
+		else if (a == 0)
+			return -1;
+
+
+		int k = 0;
+		int first = 0;
+		for (i = 0; i < a;)
+		{
+			if (haystack[i] == needle[k])
+			{
+				if (k == b - 1)
+					return i - b + 1;
+				k++;
+				i++;
+			}
+			else
+			{
+				k = 0;
+				first++;
+				i = first;
+			}
+
+		}
+		return -1;
+		/*int position = 0;
+		for (int i = 0; i < strlen(haystack); i++)
+		{
+			for (int j = 0; j < strlen(needle); j++)
+			{
+				while (haystack[i] == needle[j] && needle[j])
+					position;
+				if (needle[j] == '\0')
+					return position;
+			}
+		}
+		return -1;*/
+	
+
+	}
+
+
+
+
+int main()
+{
+	int nums[] = { 3, 2, 2, 3 };
+	int val = 3;
+	int sz = 4;
+	int s = removeElement(nums, 4, 3);
+	printf("%d", s);
+	system("pause");
+	return 0;
+}
+
