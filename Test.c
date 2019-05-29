@@ -376,4 +376,24 @@ int main()
 	system("pause");
 	return 0;
 }
+int removeDuplicates(int* nums, int numsSize) {
+	if (numsSize == 0)
+		return 0;
+	int i = 0;
+	int ch_i = 0;
+	for (i = 0; i < numsSize; i++)
+	{
+		if (nums[ch_i] == nums[i])
+		{
+			;
+		}
+		else
+		{
+			ch_i += 1;
+			nums[ch_i] = nums[i];
+		}
+
+	}
+	return ch_i + 1;
+}
 
