@@ -397,3 +397,92 @@ int removeDuplicates(int* nums, int numsSize) {
 	return ch_i + 1;
 }
 
+int searchInsert(int* nums, int numsSize, int target){
+	assert(nums);
+	int* _nums = nums;
+	int count = 0;
+	
+	if (*nums>target)
+		return 0;
+
+	for (int i = 0; i < numsSize - 1; i++)
+	{
+		if (nums[i] < target&&nums[i] != target)
+			count++;
+		else
+			return i;
+	}
+	return count;
+
+}
+
+
+
+int maxSubArray(int* nums, int numsSize){
+	if (numsSize == 0) return 0;
+
+	int * Ptr = nums;
+	int i = 0, j = 0;
+	int MAX = nums[0]; int sum = nums[0];
+	while (i <= numsSize - 1 && j<numsSize - 1){
+		if (Ptr[j + 1] >= sum + Ptr[j + 1]) {
+			j++; i = j;
+			sum = Ptr[j];
+		}
+		else{
+			j++;
+			sum = sum + Ptr[j];
+		}
+
+		if (sum >= MAX){
+			MAX = sum;
+		}
+	}
+
+	return MAX;
+}
+
+int maxSubArray(int* nums, int numsSize)
+{
+	if (numsSize == 0)
+		return 0;
+
+	int j = 0;
+
+	int MAX = nums[0];
+	int sum = nums[0];
+
+	while (j < numsSize - 1)
+	{
+		if (nums[j + 1] >= nums[j + 1] + sum)
+		{
+			j++;
+			sum = nums[j];
+		}
+		else
+		{
+			j++;
+			sum += nums[j];
+		}
+		if (sum >= MAX)
+			MAX = sum;
+	}
+	return MAX;
+}
+#define MAX(x, y) x > y ? x : y
+
+int maxSubArray(int* nums, int numsSize){
+	int f_n = nums[0];
+	int result = nums[0];
+
+	for (int i = 1; i < numsSize; i++) {
+
+		f_n = MAX(f_n + nums[i], nums[i]);
+		result = MAX(f_n, result);
+
+	}
+
+	return result;
+
+}
+
