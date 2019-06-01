@@ -485,4 +485,171 @@ int maxSubArray(int* nums, int numsSize){
 	return result;
 
 }
+//6-1
+
+#pragma once
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+
+// 静态顺序表
+//#define N 100
+//typedef int DataType;
+//struct SeqList
+//{
+//	DataType _array[N];
+//	size_t _size;
+//};
+
+typedef int DataType;
+typedef struct SeqList
+{
+	DataType* _array;
+	size_t _size;
+	size_t _capacity;
+}SeqList;
+
+void SeqListInit(SeqList* ps);
+void SeqListDestory(SeqList* ps);
+
+void SeqListCheckCapacity(SeqList* ps);//扩容
+
+void SeqListPushBack(SeqList* ps, DataType x);//尾插
+void SeqListPushFront(SeqList* ps, DataType x);//前插
+void SeqListPopBack(SeqList* ps);//尾删
+void SeqListPopFront(SeqList* ps);//前删
+void SeqListInsert(SeqList* ps, size_t pos, DataType x);
+void SeqListErase(SeqList* ps, size_t pos);
+
+size_t SeqListSize(SeqList* ps);
+size_t SeqListFind(SeqList* ps, DataType x);
+DataType SeqListAt(SeqList* ps, size_t pos);
+
+void SeqListBubbleSort(SeqList* ps);
+int SeqListBinaryFind(SeqList* ps, DataType x);
+
+void SeqListRemoveAll(SeqList* ps, DataType x);
+
+
+
+
+//.c
+#include"SeqList.h"
+
+
+void SeqListInit(SeqList* ps)
+{
+	assert(ps);
+
+	ps->_array = NULL;
+	ps->_size = 0;
+	ps->_capacity = 0;
+
+}
+
+void SeqListDestory(SeqList* ps)
+{
+	assert(ps);
+
+	free(ps->_array);
+	ps->_array = NULL;
+	ps->_capacity = 4;
+	ps->_size = 0;
+}
+void SeqListCheckCapacity(SeqList*ps)
+{
+	assert(ps);
+
+
+	if (ps->_size == ps->_capacity)
+	{
+		size_t new_capacity = ps->_capacity * 2;
+		realloc(ps->_array, sizeof(SeqList)*new_capacity);
+	}
+}
+
+
+void SeqListPushBack(SeqList* ps, DataType x)//尾插
+{
+	assert(ps);
+
+	SeqListCheckCapacity(ps);
+
+	ps->_array[ps->_size] = x;
+	ps->_size++;
+}
+
+void SeqListPopBack(SeqList* ps)//尾删
+{
+	assert(ps);
+
+	--ps->_size;
+
+}
+
+void SeqListPushFront(SeqList* ps, DataType x)//前插
+{
+	assert(ps);
+	
+	SeqListCheckCapacity(ps);
+
+	size_t end = ps->_size;
+	size_t start = 0;
+	while (end)
+	{
+		ps->_array[end] = ps->_array[end - 1];
+		--end;
+	}
+	ps->_array[start] = x;
+	ps->_size++;
+}
+
+void SeqListPopFront(SeqList* ps)//前删
+{
+	assert(ps);
+	size_t end = ps->_size-1;
+	for (size_t i = 0; i < ps->_size; i++)
+	{
+		ps->_array[i] = ps->_array[i + 1];
+	}
+	ps->_size--;
+}
+
+void SeqListInsert(SeqList* ps, size_t pos, DataType x)//任意位置插入
+{
+	assert(ps);
+
+	SeqListCheckCapacity(ps);
+	size_t start = ps->_size - pos;
+	size_t end = ps->_size;
+
+	for (size_t i = 0; i < start; i++)
+	{
+		ps->_array[end] = ps->_array[end - 1];
+		--end;
+	}
+	ps->_array[pos] = x;
+	ps->_size++;
+
+}
+
+
+void SeqListErase(SeqList* ps, size_t pos)//任意位置删除
+{
+	assert(ps);
+
+
+	size_t start = 0;
+	size_t end = ps->_size-1;
+
+	for (size_t i = 0; i < end - pos; i++)
+	{
+		ps->_array[pos] = ps->_array[pos + 1];
+		pos++;
+	}
+	ps->_size--;
+}
+
+//test
+
 
