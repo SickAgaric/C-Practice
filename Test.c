@@ -650,6 +650,78 @@ void SeqListErase(SeqList* ps, size_t pos)//任意位置删除
 	ps->_size--;
 }
 
-//test
+//6_22
+
+int lengthOfLastWord(char * s){
+	
+	assert(s);
+	int count = 0;
+	int n = 0;
+
+	while (*s++ == '\0')
+	{
+		if (*s == ' ')
+			n++;
+	}
+	while (*--s)
+	{
+		if (*s == ' ')
+		{
+			break;
+		}
+		else
+		count++;
+	}
+	if (n <= 1)
+		return 0;
+	else
+		count;
+	
+
+
+}
+
+
+
+int lengthOfLastWord(char * s)
+{
+	int WordLength = 0;
+	int WordLengthCount = 0;
+
+	while (*s != '\0')
+	{
+		while (*s != ' ')
+		{
+			while ((*s != ' ') && (*s != '\0'))
+			{
+				WordLengthCount++;
+				WordLength = WordLengthCount;
+				s++;
+			}
+			if (*s == '\0')
+				return WordLength;
+			s++;
+		}
+		if (*s == '\0')
+			return WordLength;//防止空格的输入，让程序陷入死循环
+		s++;
+	}
+	return WordLength;
+}
+/**
+* Note: The returned array must be malloced, assume caller calls free().
+*/
+int* plusOne(int* digits, int digitsSize, int* returnSize){
+	assert(digits&&returnSize);
+	if (digits[digitsSize - 1] != 9)
+	{
+		*digits = *digits + 1;
+		return digits;
+	}
+
+
+
+
+}
 
 
