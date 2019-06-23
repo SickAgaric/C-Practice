@@ -723,5 +723,98 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
 
 
 }
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void order(int x[][4] ,int y[][4],int z[][4])
+{
+	int i, j, k;
+	for (i = 0; i<4; i++)
+	for (j = 0; j<4; j++)
+	for (k = 0; k<4; k++)
+		x[i][j] += y[i][k] * z[k][j];
+
+}
+
+int main()
+{
+	int a[4][4] = { { 1, 0, 0, 0 }, { 2, 0, 1, 0 }, { 1, 0, 0, 1 }, { 1, 0, 1, 0 } };
+	int b2[4][4] = { 0 };
+	int b3[4][4] = { 0 };
+	int b4[4][4] = { 0 };
+	int B[4][4];
+	int i, j, k;
+
+	order(b2,a, a);
+	order(b3,b2,a);
+	order(b4,b3,a);
+	
+	
+		/*for(i=0;i<4;i++)
+			for(j=0;j<4;j++)
+				for(k=0;k<4;k++)
+					b2[i][j]+=a[i][k]*a[k][j];
+		for(i=0;i<4;i++)
+			for(j=0;j<4;j++)
+				for(k=0;k<4;k++)
+					b3[i][j]+=b2[i][k]*a[k][j];		
+		for(i=0;i<4;i++)
+			for(j=0;j<4;j++)
+				for(k=0;k<4;k++)
+					b4[i][j]+=b3[i][k]*a[k][j];					
+		for(i=0;i<4;i++)
+			for(j=0;j<4;j++)
+				B[i][j]=a[i][j]+b2[i][j]+b3[i][j]+b4[i][j];*/
+
+	printf("\nD:\n");
+	for (i = 0; i<4; i++)
+	{
+		for (j = 0; j<4; j++)
+			printf("%2d ", a[i][j]);
+		printf("\n");
+	}
+	printf("\n");
+
+	printf("D^2:\n");
+	for (i = 0; i<4; i++)
+	{
+		for (j = 0; j<4; j++)
+			printf("%2d ", b2[i][j]);
+		printf("\n");
+	}
+	printf("\n");
+	printf("D^3:\n");
+	for (i = 0; i<4; i++)
+	{
+		for (j = 0; j<4; j++)
+			printf("%2d ", b3[i][j]);
+		printf("\n");
+	}
+	printf("\n");
+	printf("D^4:\n");
+	for (i = 0; i<4; i++)
+	{
+		for (j = 0; j<4; j++)
+			printf("%2d ", b4[i][j]);
+		printf("\n");
+	}
+	printf("\n");
+	printf("B=D+D^2+D^3+D^4:\n");
+	for (i = 0; i<4; i++)
+	{
+		for (j = 0; j<4; j++)
+			printf("%2d ", B[i][j]);
+		printf("\n");
+	}
+
+
+
+
+
+	printf("\n");
+	system("pause");
+	return 0;
+}
 
 
