@@ -818,3 +818,73 @@ int main()
 }
 
 
+char* addBinary(char* a, char* b){
+	if (a == NULL || *a == NULL)
+		return b;
+	if (b == NULL || *b == NULL)
+		return a;
+	int len1 = strlen(a), len2 = strlen(b);
+	int len = 0;
+	if (len1 < len2)
+		len = len2 + 2;
+	else
+		len = len1 + 2;
+	char* result = (char*)malloc(len*sizeof(char));
+	result[len - 1] = '\0';
+	int flag = 0;
+	int index = len - 2;
+	while (len1 || len2 || flag){
+		int t = flag;
+		if (len1)
+			t += a[len1 - 1] + '0';
+		if (len2)
+			t += b[len2 - 1] + '0';
+		flag = t / 2;
+		result[index--] = t % 2 + '0';
+	}
+	if (index == 0)
+	{
+		char* temp = (char*)malloc((len - 1)*sizeof(char));
+		memcpy(temp, result, (len - 1)*sizeof(char));
+		free(result);
+		return temp;
+	}
+	return result;
+}
+
+#define max(a, b) ((a) > (b) ? (a) : (b)
+char* addBinary(char* a, char* b){
+	if (a == NULL || *a == NULL)
+		return b;
+	if (b == NULL || *b == NULL)
+		return a;
+
+	int len1 = strlen(a), len2 = strlen(b);
+	int len = max(len1, len2) + 2;
+
+	char* result = (char*)malloc(sizeof(char)*len);
+	result[len - 1] = '\0';
+
+	int flag = 0, index = len - 2;
+	while (len1, len2, index)
+	{
+		int t = flag;
+		if (len1)
+			t += (a[--len1] + '0');
+		if (len2)
+			t += (b[--len2] + '0');
+		flag = t / 2;
+		result[index--] = t % 2 + '0';
+	}
+	if (index == 0)
+	{
+		char* temp = (char*)malloc((len - 1)*sizeof(char));
+		memcpy(temp, result + 1, (len - 1)*sizeof(char));
+		free(result);
+		return temp;
+	}
+	return result;
+
+
+}
+
