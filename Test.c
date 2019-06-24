@@ -887,4 +887,150 @@ char* addBinary(char* a, char* b){
 
 
 }
+#include"contact.h"
 
+int main()
+{
+	ContactBook cb;
+	ContactBookInit(&cb);
+	Contact con1;
+	strcpy(con1._name, "das");
+	strcpy(con1._address, "asdsad");
+	strcpy(con1._tel, "1231415");
+	con1._age = 18;
+	ContactBookAppend(&cb, &con1);
+	ContactBookPrint(&cb);
+
+	ContactBookSave(&cb, "1.txt");
+	ContactBookLoad(&cb, "1.txt");
+	
+
+	ContactBookDestory(&cb);
+
+
+	return 0;
+}
+
+    int _age;
+}Contact;
+
+
+typedef struct ContactBook 
+{
+	Contact* _con_arry;
+	size_t _size;
+	size_t _capacity;
+}ContactBook;
+
+
+void ContactBookInit(ContactBook* pbook);
+void ContactBookDestory(ContactBook* pbook);//
+void ContactBookAppend(ContactBook* pbook,Contact* con);
+void ContactBookDelete(ContactBook* pbook, const char* name);
+void ContactBookFind(ContactBook* pbook,const char* name);
+void ContactBookSave(ContactBook* pbook,const char* file);
+void ContactBookLoad(ContactBook* pbook,const char* file);
+void ContactBookPrint(ContactBook* pbook);
+
+#include "contact.h"
+
+
+void ContactBookInit(ContactBook* pbook)
+{
+	
+	assert(pbook);
+	pbook->_con_arry = (Contact*)malloc(sizeof(Contact)*8);
+
+	if(pbook == NULL)
+	{
+		printf("输入错误\n");
+		exit(-1);
+	}
+	pbook->_capacity = 8;
+	pbook->_size = 0;
+
+
+
+}
+void ContactBookAppend(ContactBook* pbook,Contact* pcon)
+{
+	assert(pbook && pcon);
+	if (pbook->_size >= pbook->_capacity)
+	{
+		pbook->_capacity *= 2;
+		Contact* Newarry = realloc(pbook->_con_arry,sizeof(Contact)* pbook->_capacity);
+		if (Newarry == NULL)
+		{
+			printf("error\n");
+			exit(-1);
+		}
+		pbook->_con_arry = Newarry;
+
+	}
+	Contact* array = pbook->_con_arry;
+	size_t i = pbook->_size;
+	strcpy(array[i]._name, pcon->_name);
+	strcpy(array[i]._address, pcon->_address);
+	strcpy(array[i]._tel, pcon->_tel);
+	array[i]._age = pcon->_age;
+	pbook->_size++;
+
+	
+}
+
+void ContactBookDestory(ContactBook* pbook)
+{
+	assert(pbook);
+	free(pbook->_con_arry);
+	pbook->_con_arry = NULL;
+	pbook->_size = pbook->_capacity = 0;
+
+}
+
+
+void ContactBookSave(ContactBook* pbook, const char* file)
+{
+	assert(pbook && file);
+	FILE* fp = fopen(file, "wb");
+	if (fp == NULL)
+	{
+		printf("error\n");
+		exit(-1);
+	}
+	Contact* array = pbook->_con_arry;
+	for (size_t i = 0; i < pbook->_size; ++i)
+	{
+		fwrite(&array[i], sizeof(Contact), 1, fp);
+
+	}
+	fclose(fp);
+}
+
+void ContactBookLoad(ContactBook* pbook, const char* file)
+{
+	FILE* fp = fopen(file, "rb");
+	if (pbook == NULL)
+	{
+		printf("error\n");
+		exit(-1);
+	}
+	Contact con;
+	while (fread(&con, sizeof(Contact), 1, fp) == 1)
+	{
+		ContactBookAppend(pbook, &con);
+	}
+	fclose(fp);
+}
+void ContactBookPrint(ContactBook* pbook)
+{
+	for (size_t i = 0; i < pbook->_size; ++i)
+	{
+		printf("===========================================\n");
+		printf("%s", pbook->_con_arry[i]._name);
+		printf("%s", pbook->_con_arry[i]._address);
+		printf("%s", pbook->_con_arry[i]._tel);
+		printf("%d", pbook->_con_arry[i]._age);
+		printf("===========================================\n");
+
+	}
+}
